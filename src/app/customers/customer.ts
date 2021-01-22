@@ -1,8 +1,8 @@
 export class Customer {
-  id: number;
   name: string;
-  cpf: string;
+  lastName: string;
   gen: string;
   birthDate: string;
   state: string;
+  linguages: string[];
 }

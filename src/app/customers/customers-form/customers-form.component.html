@@ -1,33 +1,66 @@
 <main class="main-content">
+  <div class="handle-submit">
+    <div class="success" *ngIf="success === true">
+      Cliente cadastrado com sucesso!
+    </div>
+    <div class="error" *ngIf="error === true">
+      Erro, não foi possível criar o cliente
+    </div>
+  </div>
   <h1>Clientes</h1>
-
   <div>
-    <form>
-      <div class="form-group">
-        <label for="id">ID:</label>
-        <input type="text" name="id" />
-      </div>
-      <div class="form-group">
-        <label for="birthdate">Data de Nascimento:</label>
-        <input type="date" id="birthdate" name="birthdate" />
-      </div>
-
+    <form #customerForm="ngForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="name">Nome: </label>
-        <input type="text" id="name" name="name" />
+        <input type="text" id="name" name="name" [(ngModel)]="customer.name" />
       </div>
+
+      <div class="form-group">
+        <label for="lastname">Sobrenome: </label>
+        <input type="text" name="lastName" [(ngModel)]="customer.lastName" />
+      </div>
+
+      <div class="form-group">
+        <label for="birthdate">Data de Nascimento:</label>
+        <input
+          type="date"
+          id="birthdate"
+          name="birthDate"
+          [(ngModel)]="customer.birthDate"
+        />
+      </div>
+
       <div class="form-group">
         <label for="">Genero:</label>
-        <input type="radio" id="male" name="gender" value="male" />
+        <input
+          type="radio"
+          id="male"
+          name="gender"
+          value="male"
+          [(ngModel)]="customer.gen"
+        />
         <label for="male">Homem</label>
-        <input type="radio" id="female" name="gender" value="female" />
+        <input
+          type="radio"
+          id="female"
+          name="gender"
+          value="female"
+          [(ngModel)]="customer.gen"
+        />
         <label for="female">Mulher</label>
-        <input type="radio" id="other" name="gender" value="other" />
+        <input
+          type="radio"
+          id="other"
+          name="gender"
+          value="other"
+          [(ngModel)]="customer.gen"
+        />
         <label for="other">Outro</label>
       </div>
+
       <div class="form-group">
         <label for="states">Selecione o seu estado:</label>
-        <select name="states" id="states">
+        <select name="states" id="states" [(ngModel)]="customer.state">
           <option value="AC">Acre</option>
           <option value="AL">Alagoas</option>
           <option value="AP">Amapá</option>
@@ -59,12 +92,13 @@
       </div>
       <div class="form-group">
         <p>Linguagem de programação favorita:</p>
-        <input type="checkbox" id="javascript" name="javascript"/>
-        <label for="javascript">Javascript</label>
-        <input type="checkbox" id="java" name="java"/>
-        <label for="java">Java</label>
-        <input type="checkbox" id="python" name="python"/>
-        <label for="python">Python</label>
+        <div *ngFor="let linguage of linguages">
+          <input
+            type="checkbox"
+            (change)="onChange(linguage, $event.target.checked)"
+          />
+          {{ linguage }}
+        </div>
       </div>
 
       <div>
