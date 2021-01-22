@@ -1,0 +1,28 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "name": "Alan",
+      "gen": "Masculino",
+      "birthDate": "1999-07-13T",
+      "state": "PB",
+      "linguages": ["javascript", "java"]
+    },
+    {
+      "id": 2,
+      "name": "Bruna",
+      "gen": "Feminino",
+      "birthDate": "1999-11-05T",
+      "state": "SP",
+      "linguages": ["javascript", "python"]
+    },
+    {
+      "id": 3,
+      "name": "Carlos",
+      "gen": "Masculino",
+      "birthDate": "2001-02-07T",
+      "state": "RS",
+      "linguages": ["javascript", "java", "python"]
+    }
+  ]
+}
