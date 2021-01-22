@@ -9,6 +9,7 @@ import { TemplateModule } from './template/template.module';
 import { HomeComponent } from './home/home.component';
 import { CustomersModule } from './customers/customers.module';
 import { CustomersService } from './customers.service';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { CustomersService } from './customers.service';
     HttpClientModule,
     AppRoutingModule,
     TemplateModule,
-    CustomersModule
+    CustomersModule,
+    NoopAnimationsModule
   ],
   providers: [CustomersService],
   bootstrap: [AppComponent]

@@ -25,17 +25,6 @@
       "id": 4
     },
     {
-      "name": "Roberta",
-      "lastName": "Maia",
-      "birthDate": "2005-01-13",
-      "gen": "female",
-      "state": "BA",
-      "linguages": [
-        "Java"
-      ],
-      "id": 7
-    },
-    {
       "name": "Keylla",
       "lastName": "Brandão",
       "birthDate": "1999-07-13",

@@ -34,7 +34,9 @@
           <td>{{ customer.state }}</td>
           <td>{{ customer.linguages }}</td>
           <td>
-            <button routerLink="/customers-form/{{ customer.id }}">Editar</button>
+            <button routerLink="/customers-form/{{ customer.id }}">
+              Editar
+            </button>
             <button (click)="deleteCustomer(customer)">Excluir</button>
           </td>
         </tr>
