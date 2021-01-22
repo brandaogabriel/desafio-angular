@@ -8,6 +8,7 @@
     </div>
   </div>
   <h1>Clientes</h1>
+  <h2>{{ customer.id ? "Edição" : "Cadastro" }}</h2>
   <div>
     <form #customerForm="ngForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
@@ -100,9 +101,10 @@
           {{ linguage }}
         </div>
       </div>
-
       <div>
-        <button type="submit">Salvar</button>
+        <button type="submit" *ngIf="!customer.id">Salvar</button>
+        <button type="submit" *ngIf="customer.id">Atualizar</button>
+        <button type="button" (click)="backToList()">Voltar</button>
       </div>
     </form>
   </div>
