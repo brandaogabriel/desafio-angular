@@ -1,39 +1,50 @@
 {
   "customers": [
     {
-      "id": 3,
-      "name": "Carlos",
-      "lastName": "Torres",
+      "name": "Joaquim",
+      "lastName": "Silva",
+      "birthDate": "2001-05-20",
       "gen": "male",
-      "birthDate": "2001-02-07",
-      "state": "RS",
+      "state": "AC",
       "linguages": [
-        "javascript",
-        "java",
-        "python"
-      ]
+        "Javascript",
+        "Java"
+      ],
+      "id": 1
     },
     {
-      "name": "GABRIEL DE",
-      "lastName": "BRANDAO",
-      "state": "PB",
-      "birthDate": "1999-07-13",
+      "name": "Roberto",
+      "lastName": "Carlos",
+      "birthDate": "1941-04-19",
       "gen": "male",
+      "state": "ES",
+      "linguages": [],
+      "id": 2
+    },
+    {
+      "name": "Juliana",
+      "lastName": "Martins",
+      "birthDate": "1987-11-02",
+      "gen": "female",
+      "state": "RJ",
       "linguages": [
+        "Javascript",
+        "Java"
+      ],
+      "id": 3
+    },
+    {
+      "name": "Katia",
+      "lastName": "Silva",
+      "birthDate": "1996-06-05",
+      "gen": "female",
+      "state": "SP",
+      "linguages": [
+        "Java",
+        "Python",
         "Java"
       ],
       "id": 4
-    },
-    {
-      "name": "Keylla",
-      "lastName": "Brandão",
-      "birthDate": "1999-07-13",
-      "gen": "female",
-      "state": "AM",
-      "linguages": [
-        "Javascript"
-      ],
-      "id": 8
     }
   ]
 }

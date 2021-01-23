@@ -64,7 +64,6 @@ export class CustomersFormComponent implements OnInit {
     if (isChecked) {
       this.linguagesSelected.push(name);
     } else {
-      //TODO FIX LAST INDEX
       const index = this.linguages.findIndex((value) => value === name);
       this.linguagesSelected.splice(index, 1);
     }
@@ -72,6 +71,6 @@ export class CustomersFormComponent implements OnInit {
   }
 
   backToList() {
-    this.router.navigate(['/customers-list']);
+    this.router.navigate(['/customers/list']);
   }
 }

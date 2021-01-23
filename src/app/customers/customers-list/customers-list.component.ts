@@ -26,7 +26,7 @@ export class CustomersListComponent implements OnInit {
   }
 
   newRegister() {
-    this.router.navigate(['/customers-form']);
+    this.router.navigate(['/customers/form']);
   }
 
   deleteCustomer(customer: Customer) {

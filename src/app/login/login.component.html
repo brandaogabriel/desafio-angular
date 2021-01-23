@@ -1,0 +1,35 @@
+<div class="container-form">
+  <div class="container-form-header">
+    <h3>Login form</h3>
+  </div>
+
+  <form #loginForm="ngForm" (submit)="onSubmit()">
+    <div class="form-login">
+      <input
+        type="text"
+        placeholder="Username"
+        name="username"
+        class="login"
+        [(ngModel)]="username"
+        autocomplete="off"
+      />
+    </div>
+
+    <div class="form-password">
+      <input
+        type="password"
+        placeholder="*******"
+        name="password"
+        class="password"
+        [(ngModel)]="password"
+      />
+    </div>
+
+    <div class="form-footer">
+      <button type="submit" class="btn">Entrar</button>
+    </div>
+    <div class="error" *ngIf="loginError === true">
+      Login e/ou senha inválidos.
+    </div>
+  </form>
+</div>
