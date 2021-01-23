@@ -1,35 +1,42 @@
-<div class="container-form">
+<mat-spinner *ngIf="rendering" class="spinner"></mat-spinner>
+
+<div class="container-form" *ngIf="!rendering">
   <div class="container-form-header">
-    <h3>Login form</h3>
+    <h3>SIGN IN</h3>
   </div>
 
   <form #loginForm="ngForm" (submit)="onSubmit()">
     <div class="form-login">
-      <input
-        type="text"
-        placeholder="Username"
-        name="username"
-        class="login"
-        [(ngModel)]="username"
-        autocomplete="off"
-      />
+      <mat-icon class="icon">account_box</mat-icon>
+      <mat-form-field class="half-width">
+        <mat-label>Usuário</mat-label>
+        <input
+          matInput
+          placeholder="Nome do usuário"
+          type="text"
+          name="username"
+          [(ngModel)]="username"
+          autocomplete="off"
+        />
+      </mat-form-field>
     </div>
 
     <div class="form-password">
-      <input
-        type="password"
-        placeholder="*******"
-        name="password"
-        class="password"
-        [(ngModel)]="password"
-      />
+      <mat-icon class="icon">vpn_key</mat-icon>
+      <mat-form-field class="half-width">
+        <mat-label>Senha</mat-label>
+        <input
+          matInput
+          placeholder="*******"
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+        />
+      </mat-form-field>
     </div>
 
     <div class="form-footer">
-      <button type="submit" class="btn">Entrar</button>
-    </div>
-    <div class="error" *ngIf="loginError === true">
-      Login e/ou senha inválidos.
+      <button mat-raised-button type="submit" color="primary">Entrar</button>
     </div>
   </form>
 </div>

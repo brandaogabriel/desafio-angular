@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
@@ -7,9 +8,6 @@ import { Component } from '@angular/core';
 })
 export class LayoutComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  constructor(private router: Router) { }
 
 }

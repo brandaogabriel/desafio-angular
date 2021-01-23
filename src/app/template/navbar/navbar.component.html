@@ -1,11 +1,11 @@
-<header class="flexBox">
-  <h3>Meus clientes</h3>
-  <nav>
-    <ul>
-      <!-- <li><a routerLink="/home">Home</a></li> -->
-      <!-- <li><a routerLink="/customers-form">Cadastro</a></li> -->
-      <li><a routerLink="/customers">Clientes</a></li>
-      <li><a routerLink="/contacts">Contatos</a></li>
-    </ul>
-  </nav>
-</header>
+<mat-spinner *ngIf="rendering" class="spinner"></mat-spinner>
+<mat-toolbar *ngIf="!rendering">
+  <mat-toolbar-row>
+    <mat-icon>account_balance_wallet</mat-icon>
+    <span>Meus clientes e contatos</span>
+    <span class="spacer"></span>
+    <button mat-raised-button class="btn-nav"><mat-icon>account_circle</mat-icon><a routerLink="/customers">Clientes</a></button>
+    <button mat-raised-button class="btn-nav"><mat-icon>import_contacts</mat-icon><a routerLink="/contacts">Contatos</a></button>
+  </mat-toolbar-row>
+
+</mat-toolbar>
