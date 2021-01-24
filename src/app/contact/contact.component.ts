@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../contact.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -23,8 +23,7 @@ export class ContactComponent implements OnInit {
     private contactService: ContactService,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
-    private router: Router,
-    private activedRoute: ActivatedRoute
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -78,15 +77,6 @@ export class ContactComponent implements OnInit {
     this.editingContact = true;
     this.ngOnInit();
     this.router.navigate([`/contacts/${contactId}`]);
-    // let contact: Contact;
-    // this.contactService.getContactById(contactId).subscribe((response) => {
-    //   contact = response;
-    //   this.formRequest.patchValue({
-    //     name: response.name,
-    //     email: response.email,
-    //     phoneNumber: response.phoneNumber,
-    //   });
-    // });
   }
 
   deleteContact(contact: Contact): void {
@@ -98,7 +88,7 @@ export class ContactComponent implements OnInit {
     });
   }
 
-  backToList(): void {
+  backToHome(): void {
     this.router.navigate(['/']);
   }
 }

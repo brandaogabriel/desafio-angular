@@ -7,7 +7,7 @@
     mat-raised-button
     class="btn-contact"
     type="button"
-    (click)="backToList()"
+    (click)="backToHome()"
   >
     <mat-icon>keyboard_arrow_left</mat-icon>Voltar
   </button>
@@ -48,7 +48,7 @@
             <button
               mat-raised-button
               color="primary"
-              (click)="updateContact(contact.id)"
+              routerLink="/contacts/{{ contact.id }}"
             >
               Editar
             </button>

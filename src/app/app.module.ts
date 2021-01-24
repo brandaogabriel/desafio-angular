@@ -28,6 +28,7 @@ import { ContactComponent } from './contact/contact.component';
 import { ContactService } from './contact.service';
 import { TemplateModule } from './template/template.module';
 import { LayoutComponent } from './layout/layout.component';
+import { EditComponent } from './contact/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { LayoutComponent } from './layout/layout.component';
     LoginComponent,
     ContactComponent,
     LayoutComponent,
+    EditComponent,
   ],
   imports: [
     BrowserModule,
