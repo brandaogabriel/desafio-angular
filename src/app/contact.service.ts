@@ -24,7 +24,7 @@ export class ContactService {
     return this.http.delete<any>(`${this.url}/${contact.id}`);
   }
 
-  getCustomers(): Observable<Contact[]> {
+  getContacts(): Observable<Contact[]> {
     return this.http.get<any>(this.url);
   }
 

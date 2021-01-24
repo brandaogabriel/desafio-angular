@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSelectModule} from '@angular/material/select';
 
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -23,6 +24,7 @@ import { CustomersService } from './customers.service';
 import { AuthService } from './auth.service';
 import { ContactService } from './contact.service';
 import { HomeComponent } from './home/home.component';
+import { HomeDetailsComponent } from './home/home-details/home-details.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { HomeComponent } from './home/home.component';
     LoginComponent,
     LayoutComponent,
     HomeComponent,
+    HomeDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +48,7 @@ import { HomeComponent } from './home/home.component';
     MatInputModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatSelectModule,
     BrowserAnimationsModule
   ],
   providers: [CustomersService, AuthService, ContactService],

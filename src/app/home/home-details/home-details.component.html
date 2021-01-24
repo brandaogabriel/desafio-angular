@@ -1,0 +1,47 @@
+<div *ngIf="customerList">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Gênero</th>
+        <th>Data de nascimento</th>
+        <th>Estado</th>
+        <th>Linguagens</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let customer of items">
+        <td>{{ customer.id }}</td>
+        <td>{{ customer.name }}</td>
+        <td>{{ customer.lastName }}</td>
+        <td>{{ customer.gen }}</td>
+        <td>{{ customer.birthDate }}</td>
+        <td>{{ customer.state }}</td>
+        <td>{{ customer.linguages }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="contactList">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Telefone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let contact of items">
+        <td>{{ contact.id }}</td>
+        <td>{{ contact.name }}</td>
+        <td>{{ contact.email }}</td>
+        <td>{{ contact.phoneNumber }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

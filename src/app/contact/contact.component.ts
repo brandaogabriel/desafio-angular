@@ -49,7 +49,7 @@ export class ContactComponent implements OnInit {
 
   listContacts(): void {
     this.contactService
-      .getCustomers()
+      .getContacts()
       .subscribe((response) => (this.contacts = response));
   }
 

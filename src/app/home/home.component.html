@@ -1,2 +1,22 @@
 <mat-spinner *ngIf="rendering" class="spinner"></mat-spinner>
-<p *ngIf="!rendering">Home works</p>
+<div *ngIf="!rendering" class="home-content">
+  <h1>Selecione uma para visualização</h1>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Lista de itens</mat-label>
+    <mat-select [(ngModel)]="choice">
+      <mat-option value="customers"> Clientes </mat-option>
+      <mat-option value="contacts"> Contatos </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div *ngIf="choice === 'customers'">
+    <app-home-details [items]="customers" [customerList]="true">
+    </app-home-details>
+  </div>
+
+  <div *ngIf="choice === 'contacts'">
+    <app-home-details [items]="contacts" [contactList]="true">
+    </app-home-details>
+  </div>
+</div>
