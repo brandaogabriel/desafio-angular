@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ContactComponent } from './contact/contact.component';
-import { EditComponent } from './contact/edit/edit.component';
 
 import { HomeComponent } from './home/home.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -26,14 +24,6 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-  },
-  {
-    path: 'contacts',
-    component: ContactComponent
-  },
-  {
-    path: 'contacts/:id',
-    component: EditComponent
   }
 ];
 

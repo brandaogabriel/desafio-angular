@@ -1,4 +1,5 @@
-<main class="main-content">
+<mat-spinner *ngIf="rendering" class="spinner"></mat-spinner>
+<main class="main-content" *ngIf="!rendering">
   <div class="success" *ngIf="successMsg">
     {{ successMsg }}
   </div>

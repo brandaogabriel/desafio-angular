@@ -6,9 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.sass'],
 })
 export class HomeComponent implements OnInit {
+  rendering = false;
+
   constructor() {}
 
   ngOnInit(): void {
+    this.createLoading();
+  }
+
+  createLoading(): void {
+    this.rendering = true;
+    setTimeout(() => {
+      this.rendering = false;
+    }, 1250);
   }
 
 }

@@ -18,7 +18,9 @@
       "birthDate": "1941-04-19",
       "gen": "male",
       "state": "ES",
-      "linguages": [],
+      "linguages": [
+        "Java"
+      ],
       "id": 2
     },
     {

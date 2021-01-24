@@ -17,6 +17,7 @@ export class CustomersFormComponent implements OnInit {
   id: number;
   linguages = ['Javascript', 'Java', 'Python'];
   linguagesSelected = [];
+  rendering = false;
 
   constructor(
     private customerService: CustomersService,
@@ -27,6 +28,18 @@ export class CustomersFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.createLoading();
+    this.getCustomerId();
+  }
+
+  createLoading(): void {
+    this.rendering = true;
+    setTimeout(() => {
+      this.rendering = false;
+    }, 1250);
+  }
+
+  getCustomerId(): void {
     let params = this.activedRoute.params;
     params.subscribe((urlParams) => {
       this.id = urlParams['id'];
@@ -41,19 +54,20 @@ export class CustomersFormComponent implements OnInit {
   onSubmit() {
     if (this.id) {
       this.customerService.update(this.customer).subscribe(
-        (response) => {
+        () => {
           this.success = true;
         },
-        (error) => {
+        () => {
           this.error = true;
         }
       );
-    } else {
+    }
+    else {
       this.customerService.create(this.customer).subscribe(
-        (response) => {
+        () => {
           this.success = true;
         },
-        (error) => {
+        () => {
           this.error = true;
         }
       );
