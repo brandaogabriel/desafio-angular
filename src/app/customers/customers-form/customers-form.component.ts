@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { CustomersService } from 'src/app/customers.service';
@@ -12,8 +13,6 @@ import { Customer } from '../customer';
 })
 export class CustomersFormComponent implements OnInit {
   customer: Customer;
-  success: boolean = false;
-  error: boolean = false;
   id: number;
   linguages = ['Javascript', 'Java', 'Python'];
   linguagesSelected = [];
@@ -21,6 +20,7 @@ export class CustomersFormComponent implements OnInit {
 
   constructor(
     private customerService: CustomersService,
+    private snackBar: MatSnackBar,
     private router: Router,
     private activedRoute: ActivatedRoute
   ) {
@@ -55,26 +55,48 @@ export class CustomersFormComponent implements OnInit {
     if (this.id) {
       this.customerService.update(this.customer).subscribe(
         () => {
-          this.success = true;
+          this.snackBar.open('Cliente atualizado com sucesso', 'fechar', {
+            duration: 2000,
+          });
         },
         () => {
-          this.error = true;
+          this.snackBar.open(
+            'Ocorreu um erro ao tentar atualizar o cliente',
+            'fechar',
+            {
+              duration: 2000,
+            }
+          );
         }
       );
-    }
-    else {
-      this.customerService.create(this.customer).subscribe(
-        () => {
-          this.success = true;
-        },
-        () => {
-          this.error = true;
-        }
-      );
+      this.backToList();
+    } else {
+      this.createCustomer();
     }
   }
 
-  onChange(name: string, isChecked: boolean) {
+  createCustomer(): void {
+    this.customerService.create(this.customer).subscribe(
+      () => {
+        this.snackBar.open('Cliente cadastrado com sucesso', 'fechar', {
+          duration: 2000,
+        });
+      },
+      () => {
+        this.snackBar.open(
+          'Ocorreu um erro ao tentar cadastrar o cliente',
+          'fechar',
+          {
+            duration: 2000,
+          }
+        );
+      }
+    );
+
+    this.backToList();
+  }
+
+  onChange(name: string, isChecked: boolean): void {
     if (isChecked) {
       this.linguagesSelected.push(name);
     } else {

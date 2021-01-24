@@ -63,14 +63,25 @@ export class ContactComponent implements OnInit {
       formValues.phoneNumber
     );
 
-    this.contactService.create(contact).subscribe((response) => {
-      this.contacts.push(response);
-      this.listContacts();
-      this.snackBar.open('O contato foi adicionado', 'fechar', {
-        duration: 2000,
-      });
-      this.formRequest.reset();
-    });
+    this.contactService.create(contact).subscribe(
+      (response) => {
+        this.contacts.push(response);
+        this.listContacts();
+        this.snackBar.open('O contato foi adicionado', 'fechar', {
+          duration: 2000,
+        });
+        this.formRequest.reset();
+      },
+      () => {
+        this.snackBar.open(
+          'Ocorreu um erro ao tentar adicionar o contato',
+          'fechar',
+          {
+            duration: 2000,
+          }
+        );
+      }
+    );
   }
 
   updateContact(contactId: number): void {
@@ -80,12 +91,23 @@ export class ContactComponent implements OnInit {
   }
 
   deleteContact(contact: Contact): void {
-    this.contactService.delete(contact).subscribe((response) => {
-      this.snackBar.open('O contato foi removido com sucesso', 'fechar', {
-        duration: 2000,
-      });
-      this.ngOnInit();
-    });
+    this.contactService.delete(contact).subscribe(
+      () => {
+        this.snackBar.open('O contato foi removido com sucesso', 'fechar', {
+          duration: 2000,
+        });
+        this.ngOnInit();
+      },
+      () => {
+        this.snackBar.open(
+          'Ocorreu um erro ao tentar remover o contato',
+          'fechar',
+          {
+            duration: 2000,
+          }
+        );
+      }
+    );
   }
 
   backToHome(): void {

@@ -1,47 +1,81 @@
 <mat-spinner *ngIf="rendering" class="spinner"></mat-spinner>
-<main class="main-content" *ngIf="!rendering">
-  <div class="success" *ngIf="successMsg">
-    {{ successMsg }}
-  </div>
-  <div class="error" *ngIf="errorMsg">
-    {{ errorMsg }}
-  </div>
-  <h1>Consulta</h1>
 
-  <div>
-    <button (click)="newRegister()">Novo</button>
-  </div>
+<mat-tab-group>
+  <mat-tab *ngIf="!rendering">
+    <button mat-raised-button color="primary" routerLink="/customers/form">
+      Novo
+    </button>
+    <ng-template mat-tab-label>
+      <mat-icon>list</mat-icon>
+      <div (click)="createLoading()">Todos</div>
+    </ng-template>
 
-  <div>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nome</th>
-          <th>Sobrenome</th>
-          <th>Gênero</th>
-          <th>Data de nascimento</th>
-          <th>Estado</th>
-          <th>Linguagens</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let customer of customers">
-          <td>{{ customer.id }}</td>
-          <td>{{ customer.name }}</td>
-          <td>{{ customer.lastName }}</td>
-          <td>{{ customer.gen }}</td>
-          <td>{{ customer.birthDate }}</td>
-          <td>{{ customer.state }}</td>
-          <td>{{ customer.linguages }}</td>
-          <td>
-            <button routerLink="/customers/form/{{ customer.id }}">
+    <mat-card>
+      <table mat-table [dataSource]="customers" class="full-width">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let customer">{{ customer.id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Nome</th>
+          <td mat-cell *matCellDef="let customer">{{ customer.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="lastName">
+          <th mat-header-cell *matHeaderCellDef>Sobrenome</th>
+          <td mat-cell *matCellDef="let customer">{{ customer.lastName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="gen">
+          <th mat-header-cell *matHeaderCellDef>Gênero</th>
+          <td mat-cell *matCellDef="let customer">{{ customer.gen }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="birthDate">
+          <th mat-header-cell *matHeaderCellDef>Data de nascimento</th>
+          <td mat-cell *matCellDef="let customer">{{ customer.birthDate }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="state">
+          <th mat-header-cell *matHeaderCellDef>Estado</th>
+          <td mat-cell *matCellDef="let customer">{{ customer.state }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="linguages">
+          <th mat-header-cell *matHeaderCellDef>Linguagens de programação</th>
+          <td mat-cell *matCellDef="let customer">{{ customer.linguages }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef>Editar</th>
+          <td mat-cell *matCellDef="let customer">
+            <button
+              mat-raised-button
+              color="primary"
+              routerLink="/customers/form/{{ customer.id }}"
+            >
               Editar
             </button>
-            <button (click)="deleteCustomer(customer)">Excluir</button>
           </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</main>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef>Deletar</th>
+          <td mat-cell *matCellDef="let customer">
+            <button
+              mat-raised-button
+              color="warn"
+              (click)="deleteCustomer(customer)"
+            >
+              Excluir
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsOrder"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsOrder"></tr>
+      </table>
+    </mat-card>
+  </mat-tab>
+</mat-tab-group>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
 import { CustomersService } from 'src/app/customers.service';
@@ -10,13 +11,23 @@ import { Customer } from '../customer';
   styleUrls: ['./customers-list.component.sass'],
 })
 export class CustomersListComponent implements OnInit {
-  customers: Customer[] = [];
-  successMsg: string;
-  errorMsg: string;
   rendering = false;
+  customers: Customer[] = [];
+  columnsOrder = [
+    'id',
+    'name',
+    'lastName',
+    'gen',
+    'birthDate',
+    'state',
+    'linguages',
+    'edit',
+    'delete',
+  ];
 
   constructor(
     private customerService: CustomersService,
+    private snackBar: MatSnackBar,
     private router: Router
   ) {}
 
@@ -41,10 +52,20 @@ export class CustomersListComponent implements OnInit {
   deleteCustomer(customer: Customer) {
     this.customerService.delete(customer).subscribe(
       () => {
-        this.successMsg = 'Cliente deletado com sucesso';
+        this.snackBar.open('O cliente foi removido com sucesso', 'fechar', {
+          duration: 2000,
+        });
         this.ngOnInit();
       },
-      () => (this.errorMsg = 'Ocorreu um erro ao deletar o cliente')
+      () => {
+        this.snackBar.open(
+          'Ocorreu um erro ao tentar remover o cliente',
+          'fechar',
+          {
+            duration: 2000,
+          }
+        );
+      }
     );
   }
 }

@@ -1,112 +1,140 @@
 <mat-spinner *ngIf="rendering" class="spinner"></mat-spinner>
-<main class="main-content" *ngIf="!rendering">
-  <div class="handle-submit">
-    <div class="success" *ngIf="success === true">
-      Cliente cadastrado com sucesso!
-    </div>
-    <div class="error" *ngIf="error === true">
-      Erro, não foi possível criar o cliente
-    </div>
-  </div>
-  <h1>Clientes</h1>
-  <h2>{{ customer.id ? "Edição" : "Cadastro" }}</h2>
-  <div>
-    <form #customerForm="ngForm" (ngSubmit)="onSubmit()">
-      <div class="form-group">
-        <label for="name">Nome: </label>
-        <input type="text" id="name" name="name" [(ngModel)]="customer.name" />
-      </div>
 
-      <div class="form-group">
-        <label for="lastname">Sobrenome: </label>
-        <input type="text" name="lastName" [(ngModel)]="customer.lastName" />
-      </div>
+<mat-tab-group >
+  <mat-tab *ngIf="!rendering">
+    <mat-card class="half-width">
+      <mat-card-title>Registre um novo contato</mat-card-title>
+      <form #customerForm="ngForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="full-width">
+          <mat-label>Nome:</mat-label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            matInput
+            placeholder="Digite seu nome"
+            [(ngModel)]="customer.name"
+          />
+        </mat-form-field>
 
-      <div class="form-group">
-        <label for="birthdate">Data de Nascimento:</label>
+        <mat-form-field class="full-width">
+          <mat-label>Sobrenome:</mat-label>
+          <input
+            type="text"
+            name="lastName"
+            [(ngModel)]="customer.lastName"
+            matInput
+            placeholder="Digite seu sobrenome"
+          />
+        </mat-form-field>
+
+        <mat-label>Data de nascimento:</mat-label>
         <input
           type="date"
-          id="birthdate"
+          id="birthDate"
           name="birthDate"
           [(ngModel)]="customer.birthDate"
         />
-      </div>
 
-      <div class="form-group">
-        <label for="">Genero:</label>
-        <input
-          type="radio"
-          id="male"
-          name="gender"
-          value="male"
-          [(ngModel)]="customer.gen"
-        />
-        <label for="male">Homem</label>
-        <input
-          type="radio"
-          id="female"
-          name="gender"
-          value="female"
-          [(ngModel)]="customer.gen"
-        />
-        <label for="female">Mulher</label>
-        <input
-          type="radio"
-          id="other"
-          name="gender"
-          value="other"
-          [(ngModel)]="customer.gen"
-        />
-        <label for="other">Outro</label>
-      </div>
-
-      <div class="form-group">
-        <label for="states">Selecione o seu estado:</label>
-        <select name="states" id="states" [(ngModel)]="customer.state">
-          <option value="AC">Acre</option>
-          <option value="AL">Alagoas</option>
-          <option value="AP">Amapá</option>
-          <option value="AM">Amazonas</option>
-          <option value="BA">Bahia</option>
-          <option value="CE">Ceará</option>
-          <option value="DF">Distrito Federal</option>
-          <option value="ES">Espírito Santo</option>
-          <option value="GO">Goiás</option>
-          <option value="MA">Maranhão</option>
-          <option value="MT">Mato Grosso</option>
-          <option value="MS">Mato Grosso do Sul</option>
-          <option value="MG">Minas Gerais</option>
-          <option value="PA">Pará</option>
-          <option value="PB">Paraíba</option>
-          <option value="PR">Paraná</option>
-          <option value="PE">Pernambuco</option>
-          <option value="PI">Piauí</option>
-          <option value="RJ">Rio de Janeiro</option>
-          <option value="RN">Rio Grande do Norte</option>
-          <option value="RS">Rio Grande do Sul</option>
-          <option value="RO">Rondônia</option>
-          <option value="RR">Roraima</option>
-          <option value="SC">Santa Catarina</option>
-          <option value="SP">São Paulo</option>
-          <option value="SE">Sergipe</option>
-          <option value="TO">Tocantins</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <p>Linguagem de programação favorita:</p>
-        <div *ngFor="let linguage of linguages">
+        <div class="form-group">
+          <label for="">Genero:</label>
           <input
-            type="checkbox"
-            (change)="onChange(linguage, $event.target.checked)"
+            type="radio"
+            id="male"
+            name="gender"
+            value="male"
+            [(ngModel)]="customer.gen"
           />
-          {{ linguage }}
+          <label for="male">Homem</label>
+          <input
+            type="radio"
+            id="female"
+            name="gender"
+            value="female"
+            [(ngModel)]="customer.gen"
+          />
+          <label for="female">Mulher</label>
+          <input
+            type="radio"
+            id="other"
+            name="gender"
+            value="other"
+            [(ngModel)]="customer.gen"
+          />
+          <label for="other">Outro</label>
         </div>
-      </div>
-      <div>
-        <button type="submit" *ngIf="!customer.id">Salvar</button>
-        <button type="submit" *ngIf="customer.id">Atualizar</button>
-        <button type="button" (click)="backToList()">Voltar</button>
-      </div>
-    </form>
-  </div>
-</main>
+
+        <div class="form-group">
+          <label for="states">Selecione o seu estado:</label>
+          <select name="states" id="states" [(ngModel)]="customer.state">
+            <option value="AC">Acre</option>
+            <option value="AL">Alagoas</option>
+            <option value="AP">Amapá</option>
+            <option value="AM">Amazonas</option>
+            <option value="BA">Bahia</option>
+            <option value="CE">Ceará</option>
+            <option value="DF">Distrito Federal</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="GO">Goiás</option>
+            <option value="MA">Maranhão</option>
+            <option value="MT">Mato Grosso</option>
+            <option value="MS">Mato Grosso do Sul</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="PA">Pará</option>
+            <option value="PB">Paraíba</option>
+            <option value="PR">Paraná</option>
+            <option value="PE">Pernambuco</option>
+            <option value="PI">Piauí</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="RN">Rio Grande do Norte</option>
+            <option value="RS">Rio Grande do Sul</option>
+            <option value="RO">Rondônia</option>
+            <option value="RR">Roraima</option>
+            <option value="SC">Santa Catarina</option>
+            <option value="SP">São Paulo</option>
+            <option value="SE">Sergipe</option>
+            <option value="TO">Tocantins</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <p>Linguagem de programação favorita:</p>
+          <div *ngFor="let linguage of linguages">
+            <input
+              type="checkbox"
+              (change)="onChange(linguage, $event.target.checked)"
+            />
+            {{ linguage }}
+          </div>
+        </div>
+
+        <div class="btn">
+          <button
+            type="submit"
+            *ngIf="!customer.id"
+            mat-raised-button
+            color="primary"
+          >
+            Adicionar
+          </button>
+          <button
+            type="submit"
+            mat-raised-button
+            *ngIf="customer.id"
+            color="accent"
+          >
+            Atualizar
+          </button>
+          <button
+            type="button"
+            mat-raised-button
+            (click)="backToList()"
+            color="warn"
+          >
+            Voltar
+          </button>
+        </div>
+      </form>
+    </mat-card>
+  </mat-tab>
+</mat-tab-group>

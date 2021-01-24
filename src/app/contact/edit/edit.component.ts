@@ -72,12 +72,19 @@ export class EditComponent implements OnInit {
     this.contactToBeEdited.email = formValues.email;
     this.contactToBeEdited.phoneNumber = formValues.phoneNumber;
 
-    this.contactService.update(this.contactToBeEdited).subscribe(() => {
-      this.snackBar.open('O contato foi editado com sucesso', 'fechar', {
-        duration: 2000,
-      });
-      this.formEdit.reset();
-    });
+    this.contactService.update(this.contactToBeEdited).subscribe(
+      () => {
+        this.snackBar.open('O contato foi editado com sucesso', 'fechar', {
+          duration: 2000,
+        });
+        this.formEdit.reset();
+      },
+      () => {
+        this.snackBar.open('Ocorreu um erro ao tentar editar o contato', 'fechar', {
+          duration: 2000,
+        });
+      }
+    );
 
     this.backToList();
   }

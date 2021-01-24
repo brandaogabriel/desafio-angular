@@ -2,13 +2,14 @@
   "customers": [
     {
       "name": "Joaquim",
-      "lastName": "Silva",
+      "lastName": "Silva e melo",
       "birthDate": "2001-05-20",
       "gen": "male",
       "state": "AC",
       "linguages": [
-        "Javascript",
-        "Java"
+        "Python",
+        "Java",
+        "Javascript"
       ],
       "id": 1
     },
